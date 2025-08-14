@@ -7,35 +7,30 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHeight;
     [SerializeField] private float gravity;
 
-    private CharacterController controller;
-    private Vector2 moveInput;
-    private Vector2 velocity;
+    public Rigidbody rb;
+
+    float horizontalMovement;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
-        Debug.Log($"Move Input: {moveInput}");
+        horizontalMovement = context.ReadValue<Vector2>().x;
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log($"Jumping {context.performed} - Is Grounded: {controller.isGrounded}");
-        if (context.performed && controller.isGrounded)
-        {
-            Debug.Log("We are supposed to jump");
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        rb.linearVelocity = new Vector2(horizontalMovement * movementSpeed, rb.linearVelocity.y);
     }
 }
