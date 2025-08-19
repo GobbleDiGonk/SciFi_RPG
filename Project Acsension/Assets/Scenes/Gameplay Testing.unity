@@ -1787,7 +1787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  jumpHeight: 10
+  jumpHeight: 7.5
   gravity: 0
   groundCheckPos: {fileID: 1367323820}
   groundCheckSize: 0
