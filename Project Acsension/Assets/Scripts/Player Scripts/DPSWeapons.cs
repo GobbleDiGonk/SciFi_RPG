@@ -14,6 +14,7 @@ public class DPSWeapons : MonoBehaviour
 
     public bool gunEmpty;
     public bool gunLoaded;
+    public bool canFire;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,27 +25,34 @@ public class DPSWeapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       if(currentAmmo >=0)
+        {
+            gunLoaded = true;
+            gunEmpty = false;
+            canFire = true;
+        }
+       else if (currentAmmo <= 0)
+        {
+            gunLoaded = true;
+            gunEmpty = false;
+            canFire = true;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (currentAmmo >= 0)
-        {
-            gunLoaded = true;
-        }
-        else if (currentAmmo == 0)
-        {
-            gunLoaded = false;
-        }
+        
     }
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if(context.performed && (gunLoaded = true))
+        if (context.canceled)
         {
-            Fire();
-            currentAmmo -= 1;
+            if(gunLoaded = true &&(canFire = true)) 
+            {
+                Fire();
+                currentAmmo -= 1;
+            }
         }
     }
 
@@ -54,6 +62,8 @@ public class DPSWeapons : MonoBehaviour
         {
             ReloadWeapon();
             gunLoaded = true;
+            gunEmpty = false;
+            Debug.Log("Weapon Reloaded");
         }
     }
 
@@ -65,6 +75,6 @@ public class DPSWeapons : MonoBehaviour
 
     private void ReloadWeapon()
     {
-        int reloadAmount = currentAmmo - maxAmmo;
+        currentAmmo = maxAmmo;
     }
 }

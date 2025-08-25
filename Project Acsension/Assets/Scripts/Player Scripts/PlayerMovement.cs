@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpHeight;
-    [SerializeField] private float gravity;
 
     Rigidbody rb;
 
@@ -36,11 +35,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (context.performed)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpHeight);
-            }
-            else if (context.canceled)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+
+                rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
             }
         }
     }
@@ -71,8 +68,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(horizontalMovement * movementSpeed, rb.linearVelocity.y);
+        
+    }
 
+    private void FixedUpdate()
+    {
         Flip();
+        rb.linearVelocity = new Vector2(horizontalMovement * movementSpeed, rb.linearVelocity.y);
     }
 }
