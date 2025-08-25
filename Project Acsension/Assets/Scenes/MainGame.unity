@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658a283fd04be7f4cb8843d4e5efcf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2098688658}
+  target: {fileID: 552812076}
   offset: {x: 0, y: 2, z: -10}
   smoothTime: 0.15
 --- !u!1 &320876685
@@ -3206,6 +3206,11 @@ MonoBehaviour:
   idleText: NPC/Press Spacebar
   activeText: 'Quest Start: Reach the end of the map'
   doneText: Quest Completed!
+--- !u!4 &552812076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3957301494277728148, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+  m_PrefabInstance: {fileID: 355698277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &563401356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3273,6 +3278,10 @@ PrefabInstance:
     - target: {fileID: 2527039060180393575, guid: 194185f25ce1cfe4992fdb9eb5d1ca53, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8544532399313185308, guid: 194185f25ce1cfe4992fdb9eb5d1ca53, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6090,6 +6099,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3422139500994902452, guid: bc71e0b84e5877947b62f5ddf51a6104, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3541207228053819539, guid: bc71e0b84e5877947b62f5ddf51a6104, type: 3}
       propertyPath: m_LocalPosition.y
       value: -269
@@ -7945,6 +7958,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 66523384}
+    - target: {fileID: 888853519705003535, guid: c0f168bdd7c97ee4284dfbacd096797f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 945554068687919336, guid: c0f168bdd7c97ee4284dfbacd096797f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -8406,6 +8423,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1458315844}
+    - target: {fileID: 691130413077477267, guid: 9e6f4321452a25246bf83748ee790ebe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 835299041357384469, guid: 9e6f4321452a25246bf83748ee790ebe, type: 3}
       propertyPath: m_Mesh
       value: 
