@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658a283fd04be7f4cb8843d4e5efcf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2098688658}
+  target: {fileID: 361096086}
   offset: {x: 0, y: 2, z: -10}
   smoothTime: 0.15
 --- !u!1 &320876685
@@ -2024,7 +2024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2187214396361165863, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3957301494277728148, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2071,6 +2071,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+--- !u!4 &361096086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3957301494277728148, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+  m_PrefabInstance: {fileID: 355698277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &373330245
 Mesh:
   m_ObjectHideFlags: 0
@@ -3364,7 +3369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: {fileID: 0}
-  idleText: NPC/Press Spacebar
+  idleText: NPC/Press F
   activeText: 'Quest Start: Reach the end of the map'
   doneText: Quest Completed!
 --- !u!1001 &563401356
@@ -11383,7 +11388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &2098688655
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class NPCTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inRange = true;
-            Debug.Log("[NPC] Player entered. Press Space to accept quest.");
+            Debug.Log("[NPC] Player entered. Press F to accept quest.");
         }
     }
 
@@ -35,10 +35,10 @@ public class NPCTrigger : MonoBehaviour
     void Update()
     {
        
-        bool spaceOld = Input.GetKeyDown(KeyCode.Space); // Old Input (When "both")
-        bool spaceNew = Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame; // New Input
+        bool fOld = Input.GetKeyDown(KeyCode.F); // Old Input (When "both")
+        bool fNew = Keyboard.current != null && Keyboard.current.fKey.wasPressedThisFrame; // New Input
 
-        if (inRange && !questActive && !questDone && (spaceOld || spaceNew))
+        if (inRange && !questActive && !questDone && (fOld || fNew))
         {
             questActive = true;
             Debug.Log("[NPC] Quest Start! (questActive = true)");
