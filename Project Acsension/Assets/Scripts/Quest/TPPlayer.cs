@@ -18,15 +18,22 @@ public class TPPlayer_NoAsset : MonoBehaviour
     }
 
     void Update()
-    {
-        
-        var kb = Keyboard.current;
-        if (kb == null) return; 
+{
+    // Get reference to the current keyboard (from Unity's Input System)
+    var kb = Keyboard.current;
+    if (kb == null) return;   // If no keyboard is connected, exit early
 
-        inputX = 0f;
-        if (kb.aKey.isPressed || kb.leftArrowKey.isPressed)  inputX -= 1f;
-        if (kb.dKey.isPressed || kb.rightArrowKey.isPressed) inputX += 1f;
-    }
+    inputX = 0f;  // Reset horizontal input every frame
+
+    // If 'A' key or Left Arrow is pressed -> move left
+    if (kb.aKey.isPressed || kb.leftArrowKey.isPressed)  
+        inputX -= 1f;
+
+    // If 'D' key or Right Arrow is pressed -> move right
+    if (kb.dKey.isPressed || kb.rightArrowKey.isPressed) 
+        inputX += 1f;
+}
+
 
     void FixedUpdate()
     {
