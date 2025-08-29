@@ -53,11 +53,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip() //checks the direction the player is moving to flip them
     {
-        if(horizontalMovement > 0.1f)
+        if(horizontalMovement > 0f)
         {
             direction = 1;
         }
-        else if(horizontalMovement < 0.1f)
+        else if(horizontalMovement < 0f)
         {
             direction = -1;
         }

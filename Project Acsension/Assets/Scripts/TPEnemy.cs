@@ -8,6 +8,7 @@ public class TPEnemy : MonoBehaviour
     [SerializeField] float chaseRange = 5f;
     [SerializeField] Transform target;
 
+
     Rigidbody rb;
     int direction = 1;
     float patrolTimer;
@@ -63,8 +64,8 @@ public class TPEnemy : MonoBehaviour
     private void Flip(float dir)
     {
         // Update facing sign only when direction is clearly left/right (avoid tiny noise)
-        if (dir > 0.1f) direction = 1;
-        else if (dir < -0.1f) direction = -1;
+        if (dir > 0f) direction = 1;
+        else if (dir < 0f) direction = -1;
 
         // Preserve original scale magnitude and only flip X sign
         Vector3 scale = transform.localScale;

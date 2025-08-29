@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
@@ -12,6 +14,21 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            var enemyHealth = collision.GetComponent<EnemyHealth>();
+
+            if(collision != null)
+            {
+                enemyHealth.TakeDamage(1);
+            }
+        }
+
+        Destroy(gameObject);
     }
 
     public void OnCollisionEnter(Collision collision)
