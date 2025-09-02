@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +8,8 @@ public class DPSWeapons : MonoBehaviour
     public GameObject playerWeapon;
     public Transform muzzle;
     public GameObject bullet;
+
+    private Animator recoil;
 
     public float bulletVelocity;
     public float reloadTime;
@@ -50,7 +54,7 @@ public class DPSWeapons : MonoBehaviour
         {
             if(gunLoaded = true &&(canFire = true)) 
             {
-                Fire();
+                StartCoroutine(Fire());
                 currentAmmo -= 1;
             }
         }
@@ -67,10 +71,13 @@ public class DPSWeapons : MonoBehaviour
         }
     }
 
-    private void Fire()
+    private IEnumerator Fire()
     {
         var fireBullet = Instantiate(bullet, muzzle.position, Quaternion.identity);
         fireBullet.GetComponent<Rigidbody>().AddForce(muzzle.transform.forward * bulletVelocity, ForceMode.Impulse);
+        playerWeapon.GetComponent<Animator>().Play("gunRecoil");
+        yield return new WaitForSeconds(0.1f);
+        playerWeapon.GetComponent<Animator>().Play("gunSteady");
     }
 
     private void ReloadWeapon()

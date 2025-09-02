@@ -2050,6 +2050,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: 83ebbf50-273c-41de-903d-9b22e8985ac3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: 'Player/Dodge Roll[/Keyboard/q]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -2058,12 +2070,40 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 980992589}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DodgeRoll
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821728113803984619, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2187214396361165863, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
       propertyPath: m_Name
@@ -2114,8 +2154,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5348733826771807367, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: rollTime
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348733826771807367, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: rollPower
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348733826771807367, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
       propertyPath: jumpHeight
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348733826771807367, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: rollCooldown
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5348733826771807367, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
       propertyPath: movementSpeed
@@ -2125,11 +2177,48 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 6429234146020314905, guid: d2b360502fcf89143828cb56a0279156, type: 3}
+    - target: {fileID: 9077961851836570615, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      propertyPath: recoil
+      value: 
+      objectReference: {fileID: 355698279}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2187214396361165863, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 980992591}
+    - targetCorrespondingSourceObject: {fileID: 3828543138075726539, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 355698279}
   m_SourcePrefab: {fileID: 100100000, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+--- !u!1 &355698278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3828543138075726539, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+  m_PrefabInstance: {fileID: 355698277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &355698279
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355698278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 843026f5dc30eb844ba50cf53a6627cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &361096086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3957301494277728148, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
@@ -5412,6 +5501,44 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &980992586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2187214396361165863, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+  m_PrefabInstance: {fileID: 355698277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &980992589 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5348733826771807367, guid: e946ea7496c485e49b7a55f60ac65852, type: 3}
+  m_PrefabInstance: {fileID: 355698277}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980992586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4578a3868848d44bedc7ac371b59b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &980992591
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980992586}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 810bab8193a4eee4eb39b01e9cd08f26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!43 &999638408
 Mesh:
   m_ObjectHideFlags: 0

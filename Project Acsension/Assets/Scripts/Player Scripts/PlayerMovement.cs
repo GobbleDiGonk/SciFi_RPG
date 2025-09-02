@@ -1,8 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Stats")]
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpHeight;
 
@@ -10,11 +13,22 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalMovement;
 
+    [Header("Ground Checker")]
     public Transform groundCheckPos;
     public float groundCheckSize;
     public LayerMask groundLayer;
 
     public int direction;
+
+    private bool canRoll;
+    private bool isRolling;
+
+    [Header("Dashing Stuff")]
+    public float rollPower = 24f;
+    public float rollTime = 0.2f;
+    public float rollCooldown = 3f;
+
+    Animator rollAnim;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); //gets the rigidbody component of the player
         rb.freezeRotation = true; //prevents the player from falling over
+        rollAnim = GetComponent<Animator>();
     }
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
@@ -39,6 +54,14 @@ public class PlayerMovement : MonoBehaviour
 
                 rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
             }
+        }
+    }
+
+    public void DodgeRoll(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            StartCoroutine(Roll());
         }
     }
 
@@ -65,15 +88,45 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = new Vector3(direction, 1, 1);
     }
 
+    private IEnumerator Roll()
+    {
+
+        if (isGrounded())
+        {
+            canRoll = false;
+            isRolling = true;
+            bool originalGraivty = rb.useGravity;
+            rb.useGravity = false;
+            rb.linearVelocity = new Vector2(transform.localScale.x * rollPower, 0f);
+            rollAnim.Play("DodgeRoll");
+            Debug.Log("Is rolling baby");
+            yield return new WaitForSeconds(rollTime);
+            rb.useGravity = true;
+            isRolling = false;
+            rollAnim.Play("Idle");
+            yield return new WaitForSeconds(rollCooldown);
+            canRoll = true;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if(isRolling)
+        {
+            return;
+        }
     }
 
     private void FixedUpdate()
     {
+        if(isRolling)
+        {
+            return;
+        }
+
         Flip();
+
         rb.linearVelocity = new Vector2(horizontalMovement * movementSpeed, rb.linearVelocity.y);
     }
 }
