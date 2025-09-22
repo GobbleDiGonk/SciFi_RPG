@@ -96,7 +96,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dodge Roll",
+                    "name": "Ability",
                     "type": "Button",
                     "id": "83ebbf50-273c-41de-903d-9b22e8985ac3",
                     "expectedControlType": "",
@@ -509,7 +509,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Dodge Roll",
+                    "action": "Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
