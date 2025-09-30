@@ -28,11 +28,9 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
+        if (collision.tag != "Bullet")
+        {
+            Destroy(gameObject);
+        }
     }
 }

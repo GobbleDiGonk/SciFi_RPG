@@ -50,13 +50,17 @@ public class DPSWeapons : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (context.performed)
         {
             if(gunLoaded = true &&(canFire = true)) 
             {
                 StartCoroutine(Fire());
                 currentAmmo -= 1;
             }
+        }
+        else if (context.canceled)
+        {
+            StopCoroutine(Fire());
         }
     }
 

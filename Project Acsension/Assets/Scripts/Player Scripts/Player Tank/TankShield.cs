@@ -5,6 +5,12 @@ public class TankShield : MonoBehaviour
 {
     public GameObject tankShield;
 
+    public float currentShieldHealth;
+    public float maxShieldHealth;
+    public float shieldCooldown;
+
+    public bool canUseShield;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
