@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Dashing Stuff")]
     public float rollPower = 24f;
     public float rollTime = 0.2f;
-    public float rollCooldown = 3f;
+    public float rollCooldown = 5f;
 
     Animator rollAnim;
 
@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>(); //gets the rigidbody component of the player
         rb.freezeRotation = true; //prevents the player from falling over
         rollAnim = GetComponent<Animator>();
+        direction = 1;
+        canRoll = true;
     }
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
@@ -59,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DodgeRoll(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && canRoll)
         {
             StartCoroutine(Roll());
         }
@@ -93,17 +95,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded())
         {
+            rollAnim.SetBool("isRolling", true);
             canRoll = false;
             isRolling = true;
             bool originalGraivty = rb.useGravity;
             rb.useGravity = false;
             rb.linearVelocity = new Vector2(transform.localScale.x * rollPower, 0f);
-            rollAnim.Play("DodgeRoll");
             Debug.Log("Is rolling baby");
             yield return new WaitForSeconds(rollTime);
+            rollAnim.SetBool("isRolling", false);
             rb.useGravity = true;
             isRolling = false;
-            rollAnim.Play("Idle");
             yield return new WaitForSeconds(rollCooldown);
             canRoll = true;
         }

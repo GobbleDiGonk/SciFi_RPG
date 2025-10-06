@@ -884,8 +884,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1534734927123640370}
   - component: {fileID: 8908204392809883266}
-  - component: {fileID: 7129562645597397119}
-  - component: {fileID: 5153858255204181314}
   - component: {fileID: 3813008914652131421}
   - component: {fileID: 3294952546504009698}
   m_Layer: 0
@@ -941,51 +939,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &7129562645597397119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8745198234535166783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4578a3868848d44bedc7ac371b59b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 7.5
-  jumpHeight: 10
-  groundCheckPos: {fileID: 6889075433913955180}
-  groundCheckSize: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  direction: 0
-  rollPower: 24
-  rollTime: 0.45
-  rollCooldown: 5
---- !u!114 &5153858255204181314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8745198234535166783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c9223d354b7664d9e6e46c0d1fcc0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 5739969921097184899}
-  muzzle: {fileID: 6065496819374573326}
-  bullet: {fileID: 6429234146020314905, guid: d2b360502fcf89143828cb56a0279156, type: 3}
-  bulletVelocity: 30
-  reloadTime: 0
-  currentAmmo: 0
-  maxAmmo: 30
-  gunEmpty: 0
-  gunLoaded: 0
-  canFire: 0
 --- !u!114 &3813008914652131421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,7 +966,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7129562645597397119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -1033,7 +986,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Look[/Mouse/delta,/Pen/delta]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5153858255204181314}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DPSWeapons, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 0
@@ -1069,7 +1022,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7129562645597397119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -1137,7 +1090,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5153858255204181314}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DPSWeapons, Assembly-CSharp
         m_MethodName: Reload
         m_Mode: 0
@@ -1153,7 +1106,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Reload[/Keyboard/r]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7129562645597397119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: DodgeRoll
         m_Mode: 0

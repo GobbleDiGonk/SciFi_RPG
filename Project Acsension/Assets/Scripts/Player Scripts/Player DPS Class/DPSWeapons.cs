@@ -52,7 +52,7 @@ public class DPSWeapons : MonoBehaviour
     {
         if (context.performed)
         {
-            if(gunLoaded = true &&(canFire = true)) 
+            if(gunLoaded && canFire) 
             {
                 StartCoroutine(Fire());
                 currentAmmo -= 1;
@@ -66,13 +66,18 @@ public class DPSWeapons : MonoBehaviour
 
     public void Reload(InputAction.CallbackContext context) //reload input
     {
-        if(context.performed)
+        if(context.performed && gunEmpty)
         {
             ReloadWeapon();
             gunLoaded = true;
             gunEmpty = false;
             Debug.Log("Weapon Reloaded");
         }
+    }
+
+    public void Aim(InputAction.CallbackContext context)
+    {
+
     }
 
     private IEnumerator Fire()

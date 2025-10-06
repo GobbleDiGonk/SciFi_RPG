@@ -5,46 +5,57 @@ using UnityEngine.InputSystem;
 
 public class Melee : MonoBehaviour
 {
+    public Transform meleeHitbox;
     public GameObject meleeWeapon;
+    Animator playerAnimator;
 
     [Header("Melee Stats")]
-    public float meleeDamage;
-    public float meleeSpeed;
-    public float meleeCooldown;
+    public float meleeDamage = 2f;
+    public float meleeSpeed = 1f;
+    public float meleeCooldown = 1;
+    public float meleeRange;
 
     public bool canMelee;
     public bool isSwinging;
 
+    public LayerMask EnemyLayer;
+
     private void Start()
     {
+        canMelee = true;
+        playerAnimator.GetComponent<Animator>();
         meleeWeapon.SetActive(false);
     }
 
     private void Update()
     {
-        if(isSwinging)
-        {
-            return;
-        }
+        
     }
 
     public void MeleeAttack(InputAction.CallbackContext context)
     {
-        StartCoroutine(performMelee());
+        Swing();
     }
 
-    private IEnumerator performMelee()
+    private void Swing()
     {
-        if(canMelee)
+        Collider[] hitbox = Physics.OverlapSphere(meleeHitbox.position, meleeRange, EnemyLayer);
+
+        foreach (Collider enemyGameObject in hitbox )
         {
-            canMelee = false;
-            isSwinging = true;
-            meleeHitbox.SetActive(true);
-            Debug.Log("Is using melee");
-            yield return new WaitForSeconds(meleeSpeed);
-            isSwinging = false;
-            yield return new WaitForSeconds(meleeCooldown);
-            canMelee = true;
+            Debug.Log("Enemy hit");
+            GetComponent<EnemyHealth>();
         }
+
+        playerAnimator.Play("meleeSwing");
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(meleeHitbox.transform.position, meleeRange);
+    }
+
+
+
+
 }

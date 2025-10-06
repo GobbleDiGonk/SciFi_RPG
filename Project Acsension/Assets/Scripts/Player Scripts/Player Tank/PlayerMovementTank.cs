@@ -26,6 +26,7 @@ public class PlayerMovementTank : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); //gets the rigidbody component of the player
         rb.freezeRotation = true; //prevents the player from falling over
+        direction = 1; //Forces the player to face right upon spawning
     }
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
