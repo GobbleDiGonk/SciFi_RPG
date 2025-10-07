@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float rollTime = 0.2f;
     public float rollCooldown = 5f;
 
-    Animator rollAnim;
+   public Animator rollAnim;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); //gets the rigidbody component of the player
         rb.freezeRotation = true; //prevents the player from falling over
-        rollAnim = GetComponent<Animator>();
         direction = 1;
         canRoll = true;
     }
@@ -95,15 +94,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded())
         {
-            rollAnim.SetBool("isRolling", true);
+            rollAnim.Play("DodgeRoll");
             canRoll = false;
             isRolling = true;
             bool originalGraivty = rb.useGravity;
             rb.useGravity = false;
             rb.linearVelocity = new Vector2(transform.localScale.x * rollPower, 0f);
             Debug.Log("Is rolling baby");
-            yield return new WaitForSeconds(rollTime);
-            rollAnim.SetBool("isRolling", false);
             rb.useGravity = true;
             isRolling = false;
             yield return new WaitForSeconds(rollCooldown);

@@ -7,10 +7,13 @@ public class Melee : MonoBehaviour
 {
     public Transform meleeHitbox;
     public GameObject meleeWeapon;
-    Animator playerAnimator;
+
+    public Animator meleeAnimator;
+
+    public WeaponColiision weaponCollision;
 
     [Header("Melee Stats")]
-    public float meleeDamage = 2f;
+    public int meleeDamage = 5;
     public float meleeSpeed = 1f;
     public float meleeCooldown = 1;
     public float meleeRange;
@@ -23,8 +26,8 @@ public class Melee : MonoBehaviour
     private void Start()
     {
         canMelee = true;
-        playerAnimator.GetComponent<Animator>();
         meleeWeapon.SetActive(false);
+        weaponCollision.GetValues(this, meleeDamage);
     }
 
     private void Update()
@@ -34,27 +37,19 @@ public class Melee : MonoBehaviour
 
     public void MeleeAttack(InputAction.CallbackContext context)
     {
-        Swing();
-    }
-
-    private void Swing()
-    {
-        Collider[] hitbox = Physics.OverlapSphere(meleeHitbox.position, meleeRange, EnemyLayer);
-
-        foreach (Collider enemyGameObject in hitbox )
+        if (canMelee)
         {
-            Debug.Log("Enemy hit");
-            GetComponent<EnemyHealth>();
+            meleeWeapon.SetActive(true);
+            meleeAnimator.Play("meleeSwing");
+            canMelee = false;
         }
-
-        playerAnimator.Play("meleeSwing");
     }
 
-    private void OnDrawGizmosSelected()
+    public void SwingEnd()
     {
-        Gizmos.DrawWireSphere(meleeHitbox.transform.position, meleeRange);
+        meleeWeapon.SetActive(false);
+        canMelee = true;
     }
-
 
 
 
