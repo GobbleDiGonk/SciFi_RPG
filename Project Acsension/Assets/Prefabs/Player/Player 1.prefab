@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2663650611692010231}
   - component: {fileID: 2894515423127596043}
   - component: {fileID: 6581853477399204485}
+  - component: {fileID: 578174638657255087}
   m_Layer: 0
   m_Name: meleeTempModel
   m_TagString: Untagged
@@ -163,6 +164,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &578174638657255087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932517165633403607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3dc84ab237c4ac428e577b9bb4722e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1549901108978842205
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3528308782380816763}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -603,8 +616,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4278261129516881293}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 0.79259187, y: 0.1653366, z: 0.15686302}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -613,7 +626,7 @@ Transform:
   - {fileID: 3371637320889173161}
   - {fileID: 5653136244833739097}
   - {fileID: 7847572183337829432}
-  m_Father: {fileID: 4625856682276046749}
+  m_Father: {fileID: 9039045269753977298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5138860921479895261
 MeshFilter:
@@ -815,7 +828,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1845624821056079914}
+  - {fileID: 9039045269753977298}
   - {fileID: 6065496819374573326}
   m_Father: {fileID: 1534734927123640370}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1052,6 +1065,7 @@ GameObject:
   - component: {fileID: 5000378534650084943}
   - component: {fileID: 7205859557194988718}
   - component: {fileID: 2683414417064778207}
+  - component: {fileID: 8428825929852514605}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -1303,6 +1317,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8311570c-7c20-4a2c-913a-2c084210a6cb
     m_ActionName: 'Player/Melee[/Keyboard/b]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8428825929852514605}
+        m_TargetAssemblyTypeName: aimWeapon, Assembly-CSharp
+        m_MethodName: AimWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9e557e70-7dce-4917-ad01-02719f1c11d9
+    m_ActionName: 'Player/Aim Weapon[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -1345,7 +1375,7 @@ MonoBehaviour:
   meleeHitbox: {fileID: 4530957074156657168}
   meleeWeapon: {fileID: 932517165633403607}
   meleeAnimator: {fileID: 6581853477399204485}
-  weaponCollision: {fileID: 0}
+  weaponCollision: {fileID: 578174638657255087}
   meleeDamage: 5
   meleeSpeed: 2
   meleeCooldown: 3
@@ -1378,6 +1408,7 @@ MonoBehaviour:
   rollPower: 24
   rollTime: 0.2
   rollCooldown: 3
+  rollAnim: {fileID: 3294952546504009698}
 --- !u!114 &2683414417064778207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1400,3 +1431,48 @@ MonoBehaviour:
   gunEmpty: 0
   gunLoaded: 0
   canFire: 1
+--- !u!114 &8428825929852514605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745198234535166783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7e72dc4f6a5bf4d894daff75c411f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPivotPoint: {fileID: 4625856682276046749}
+--- !u!1 &9213085730842174024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9039045269753977298}
+  m_Layer: 0
+  m_Name: pivotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9039045269753977298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213085730842174024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1845624821056079914}
+  m_Father: {fileID: 4625856682276046749}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
