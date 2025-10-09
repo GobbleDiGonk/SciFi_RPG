@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float rollTime = 0.2f;
     public float rollCooldown = 5f;
 
-   public Animator rollAnim;
+    public Animator rollAnim;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -94,12 +94,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded())
         {
-            rollAnim.Play("DodgeRoll");
             canRoll = false;
             isRolling = true;
             bool originalGraivty = rb.useGravity;
             rb.useGravity = false;
             rb.linearVelocity = new Vector2(transform.localScale.x * rollPower, 0f);
+            rollAnim.Play("DodgeRoll");
             Debug.Log("Is rolling baby");
             rb.useGravity = true;
             isRolling = false;

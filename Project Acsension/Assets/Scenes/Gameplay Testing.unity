@@ -119,23 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &69051530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 932517165633403607, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
-  m_PrefabInstance: {fileID: 1406044408}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &69051536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69051530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3dc84ab237c4ac428e577b9bb4722e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &131421694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,6 +2499,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8311570c-7c20-4a2c-913a-2c084210a6cb
+    m_ActionName: 'Player/Melee[/Keyboard/b]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9e557e70-7dce-4917-ad01-02719f1c11d9
+    m_ActionName: 'Player/Aim Weapon[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -2631,14 +2622,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2663650611692010231, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5000378534650084943, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
-      propertyPath: weaponCollision
+    - target: {fileID: 8428825929852514605, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
+      propertyPath: weaponPivotPoint
       value: 
-      objectReference: {fileID: 69051536}
+      objectReference: {fileID: 1447656083}
     - target: {fileID: 8745198234535166783, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -2646,11 +2633,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 932517165633403607, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 69051536}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
+--- !u!4 &1447656083 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9039045269753977298, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
+  m_PrefabInstance: {fileID: 1406044408}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1478279550
 GameObject:
   m_ObjectHideFlags: 0
