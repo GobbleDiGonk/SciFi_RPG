@@ -6624,6 +6624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dps temporary
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f96a551d17567e45b5be038734f1440, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 3f96a551d17567e45b5be038734f1440, type: 3}
       propertyPath: m_Controller
       value: 
@@ -14072,6 +14076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank temp
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 28c75c292bb987f4f847cc6ba265144c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 28c75c292bb987f4f847cc6ba265144c, type: 3}
       propertyPath: m_Controller
       value: 
@@ -16361,7 +16369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1031632035864740709
 Transform:
   m_ObjectHideFlags: 0
@@ -17603,7 +17611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1534734927123640370, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.648
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1534734927123640370, guid: d610f5d6d9c93a54189a2eee53729322, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18625,7 +18633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8447082967627794989
 Transform:
   m_ObjectHideFlags: 0
