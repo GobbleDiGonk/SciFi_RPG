@@ -1065,14 +1065,13 @@ GameObject:
   - component: {fileID: 5000378534650084943}
   - component: {fileID: 7205859557194988718}
   - component: {fileID: 2683414417064778207}
-  - component: {fileID: 8428825929852514605}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1534734927123640370
 Transform:
   m_ObjectHideFlags: 0
@@ -1319,7 +1318,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Melee[/Keyboard/b]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8428825929852514605}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: aimWeapon, Assembly-CSharp
         m_MethodName: AimWeapon
         m_Mode: 0
@@ -1431,19 +1430,6 @@ MonoBehaviour:
   gunEmpty: 0
   gunLoaded: 0
   canFire: 1
---- !u!114 &8428825929852514605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8745198234535166783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d7e72dc4f6a5bf4d894daff75c411f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPivotPoint: {fileID: 4625856682276046749}
 --- !u!1 &9213085730842174024
 GameObject:
   m_ObjectHideFlags: 0

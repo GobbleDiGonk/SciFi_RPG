@@ -13,6 +13,9 @@ public class DPSWeapons : MonoBehaviour
 
     public float bulletVelocity;
     public float reloadTime;
+    public float fireRate = 15f;
+
+    private float nextTimeToFire = 0f;
 
     public int currentAmmo, maxAmmo = 30;
 
@@ -50,17 +53,14 @@ public class DPSWeapons : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && Time.time >= nextTimeToFire)
         {
-            if(gunLoaded && canFire) 
+            if (gunLoaded && canFire)
             {
-                StartCoroutine(Fire());
+                nextTimeToFire = Time.time + 1f / fireRate;
+                Fire();
                 currentAmmo -= 1;
             }
-        }
-        else if (context.canceled)
-        {
-            StopCoroutine(Fire());
         }
     }
 
@@ -80,12 +80,15 @@ public class DPSWeapons : MonoBehaviour
 
     }
 
-    private IEnumerator Fire()
+    private void Fire()
     {
         var fireBullet = Instantiate(bullet, muzzle.position, Quaternion.identity);
         fireBullet.GetComponent<Rigidbody>().AddForce(muzzle.transform.forward * bulletVelocity, ForceMode.Impulse);
         playerWeapon.GetComponent<Animator>().Play("gunRecoil");
-        yield return new WaitForSeconds(0.1f);
+    }
+
+    private void stopRecoil()
+    {
         playerWeapon.GetComponent<Animator>().Play("gunSteady");
     }
 
