@@ -1071,7 +1071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1534734927123640370
 Transform:
   m_ObjectHideFlags: 0
@@ -1425,6 +1425,7 @@ MonoBehaviour:
   bullet: {fileID: 6429234146020314905, guid: d2b360502fcf89143828cb56a0279156, type: 3}
   bulletVelocity: 20
   reloadTime: 3
+  fireRate: 4
   currentAmmo: 30
   maxAmmo: 30
   gunEmpty: 0

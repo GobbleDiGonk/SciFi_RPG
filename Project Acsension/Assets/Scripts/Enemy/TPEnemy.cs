@@ -8,7 +8,7 @@ public class TPEnemy : MonoBehaviour
     [SerializeField] float chaseRange = 5f;
     [SerializeField] Transform target;
 
-
+    Animator slasherController;
     Rigidbody rb;
     int direction = 1;
     float patrolTimer;
@@ -17,11 +17,14 @@ public class TPEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // Prevent tipping over
+        slasherController = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
         if (target == null) return; //No action till target assigned
+
+        slasherController.Play("zombie_transition");
 
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
         // Compute distance to player to decide patrol vs chase
@@ -38,7 +41,7 @@ public class TPEnemy : MonoBehaviour
             if (Mathf.Abs(diff) > 0.2f)  // When the distance is more than 0.2f
                 dir = Mathf.Sign(diff); // 1 right, -1 left direction
 
-            rb.linearVelocity = new Vector3(dir * moveSpeed, rb.linearVelocity.y, 0f);
+            rb.linearVelocity = new Vector3(dir * moveSpeed, rb.linearVelocity.x, 0f);
             // Apply horizontal velocity, keep current vertical & z velocity
 
             Flip(dir);
@@ -54,7 +57,7 @@ public class TPEnemy : MonoBehaviour
                 patrolTimer = 0f;
             }
 
-            rb.linearVelocity = new Vector3(direction * moveSpeed, rb.linearVelocity.y, 0f);
+            rb.linearVelocity = new Vector3(direction * moveSpeed, rb.linearVelocity.x, 0f);
             // Move horizontally in the current patrol direction; preserve y & z velocity
 
             Flip(direction);
