@@ -34,9 +34,8 @@ public class NPCTrigger : MonoBehaviour
 
     void Update()
     {
-       
-        bool fOld = Input.GetKeyDown(KeyCode.F); // Old Input (When "both")
-        bool fNew = Keyboard.current != null && Keyboard.current.fKey.wasPressedThisFrame; // New Input
+        bool fOld = Input.GetKeyDown(KeyCode.F);
+        bool fNew = Keyboard.current?.fKey.wasPressedThisFrame ?? false;
 
         if (inRange && !questActive && !questDone && (fOld || fNew))
         {
