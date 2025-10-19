@@ -8,7 +8,6 @@ public class Flamethrower : MonoBehaviour
     [Header("Flamethrower Stuff")]
     public Transform flameHitDetection;
     public GameObject flameParticles;
-    public GameObject flameThrowerMuzzle;
     [SerializeField] float flamethrowerRange;
     [SerializeField] float fireRate = 20f;
     [SerializeField] float nextTimetoFire = 0f;
@@ -16,7 +15,7 @@ public class Flamethrower : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        flameParticles.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,13 +24,17 @@ public class Flamethrower : MonoBehaviour
         
     }
 
-    private void Attack(InputAction.CallbackContext context)
+    public void Attack(InputAction.CallbackContext context)
     {
         if(context.performed && Time.time >= nextTimetoFire)
         {
-            flameThrowerMuzzle.SetActive(true);
+            flameParticles.SetActive(true);
             useFlamethrower();
             nextTimetoFire = Time.time + 1f / fireRate;
+        }
+        else if (context.canceled)
+        {
+            flameParticles.SetActive(false);
         }
     }
 
