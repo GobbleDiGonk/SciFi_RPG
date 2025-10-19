@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Melee : MonoBehaviour
 {
-    public Transform meleeHitbox;
     public GameObject meleeWeapon;
 
     public Animator meleeAnimator;
