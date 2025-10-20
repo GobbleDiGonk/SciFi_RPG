@@ -7,47 +7,56 @@ public class Flamethrower : MonoBehaviour
 {
     [Header("Flamethrower Stuff")]
     public Transform flameHitDetection;
-    public GameObject flameParticles;
-    [SerializeField] float flamethrowerRange;
+    public ParticleSystem flameParticles;
+    [SerializeField] float flamethrowerRange = 150f;
     [SerializeField] float fireRate = 20f;
     [SerializeField] float nextTimetoFire = 0f;
-    public LayerMask Enemy;
+    [SerializeField] float fuel = 100;
+
+    public bool canFire;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        flameParticles.SetActive(false);
+        canFire = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.forward, Color.red);
     }
 
     public void Attack(InputAction.CallbackContext context)
     {
         if(context.performed && Time.time >= nextTimetoFire)
         {
-            flameParticles.SetActive(true);
-            useFlamethrower();
+            flameParticles.Play();
+            UseFlamethrower();
             nextTimetoFire = Time.time + 1f / fireRate;
         }
-        else if (context.canceled)
+        else if(context.canceled)
         {
-            flameParticles.SetActive(false);
+            flameParticles.Stop();
         }
     }
 
-    private void useFlamethrower()
+    private void UseFlamethrower()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(flameHitDetection.position, flameHitDetection.transform.right, out hit, flamethrowerRange, Enemy))
+        if (canFire)
         {
-            var enemyHealth = GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
+            RaycastHit hit;
+            if (Physics.Raycast(flameHitDetection.position, flameHitDetection.transform.forward, out hit, flamethrowerRange))
             {
-                enemyHealth.TakeDamage(1);
+                Debug.Log(hit.transform.name);
+                Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.right, Color.red);
+
+                var enemyHealth = GetComponent<EnemyHealth>();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(1);
+                }
             }
+            fuel -= 1;
         }
     }
 }

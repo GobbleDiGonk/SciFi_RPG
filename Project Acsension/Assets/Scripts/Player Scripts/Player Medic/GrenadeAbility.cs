@@ -32,10 +32,10 @@ public class Grenade : MonoBehaviour
     {
         canThrow = false;
         isThrowing = true;
-        var throwGrenade = Instantiate(grenadePrefab, grenadeOutput.forward, Quaternion.identity);
-        throwGrenade.GetComponent<Rigidbody>().AddForce(grenadeOutput.position * grenadeVelocity, ForceMode.Impulse);
+        var throwGrenade = Instantiate(grenadePrefab, grenadeOutput.forward, grenadeOutput.rotation);
+        throwGrenade.GetComponent<Rigidbody>().AddForce(grenadeOutput.forward * grenadeVelocity, ForceMode.Impulse);
         yield return new WaitForSeconds(grenadeCooldown);
-        canThrow = true;
         isThrowing = false;
+        canThrow = true;
     }
 }
