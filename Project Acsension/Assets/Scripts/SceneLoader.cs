@@ -3,11 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    void Update()
+    public void LoadScene(string sceneName)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("MainGame");
-        }
+        SceneManager.LoadScene(sceneName);
     }
 }
