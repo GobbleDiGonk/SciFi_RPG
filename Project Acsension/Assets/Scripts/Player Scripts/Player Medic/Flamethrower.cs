@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 using System.Collections.Generic;
 using System.Collections;
 
@@ -24,19 +24,21 @@ public class Flamethrower : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.forward, Color.red);
-    }
 
-    public void Attack(InputAction.CallbackContext context)
-    {
-        if(context.performed && Time.time >= nextTimetoFire)
+        if (Input.GetButton("Fire1") && canFire)
         {
             flameParticles.Play();
             UseFlamethrower();
             nextTimetoFire = Time.time + 1f / fireRate;
         }
-        else if(context.canceled)
+        else
         {
             flameParticles.Stop();
+        }
+
+        if(fuel <= 0)
+        {
+            canFire = false;
         }
     }
 
@@ -48,7 +50,7 @@ public class Flamethrower : MonoBehaviour
             if (Physics.Raycast(flameHitDetection.position, flameHitDetection.transform.forward, out hit, flamethrowerRange))
             {
                 Debug.Log(hit.transform.name);
-                Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.right, Color.red);
+                Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.forward, Color.red);
 
                 var enemyHealth = GetComponent<EnemyHealth>();
                 if (enemyHealth != null)
