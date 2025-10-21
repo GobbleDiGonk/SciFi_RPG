@@ -27,7 +27,7 @@ public class TPEnemy : MonoBehaviour
     {
         if (player == null) return; //No action till target assigned
 
-        slasherController.Play("zombie_transition");
+        slasherController.Play("Run");
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         // Compute distance to player to decide patrol vs chase
@@ -48,10 +48,11 @@ public class TPEnemy : MonoBehaviour
             // Apply horizontal velocity, keep current vertical & z velocity
 
             Flip(dir);
+           
         }
         else if (distanceToPlayer <= attackRange)
         {
-
+            
         }
         else
         {

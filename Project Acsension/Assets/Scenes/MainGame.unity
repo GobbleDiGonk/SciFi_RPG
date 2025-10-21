@@ -626,7 +626,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66563412}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b650f0fee081d044a933a8da4cf3c18f, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 57e5c7994d2ea9a43a2b584a71835652, type: 3}
   m_Controller: {fileID: 9100000, guid: 1697f5bcfd897054d91c1f5d143ab862, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -3311,7 +3311,7 @@ PrefabInstance:
     - target: {fileID: -4268549521053294436, guid: 83802d03e941050459462850d04b258d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2c0fcf4f8691e604796f8fb327cec8e1, type: 2}
+      objectReference: {fileID: 2100000, guid: 342e7dd7c21ee71498c3370836c9cf20, type: 2}
     - target: {fileID: -3542885339558904099, guid: 83802d03e941050459462850d04b258d, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -3335,7 +3335,7 @@ PrefabInstance:
     - target: {fileID: -1206874426333947015, guid: 83802d03e941050459462850d04b258d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ec93fb141c2ac274680b8d2c158de95f, type: 2}
+      objectReference: {fileID: 2100000, guid: 226619d2f0609654ea253a062c7a2bb7, type: 2}
     - target: {fileID: -1200856079203341021, guid: 83802d03e941050459462850d04b258d, type: 3}
       propertyPath: m_Layer
       value: 6
