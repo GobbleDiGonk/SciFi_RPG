@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -7,8 +6,7 @@ public class TPEnemy : MonoBehaviour
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] float patrolTime = 2f;
     [SerializeField] float chaseRange = 5f;
-    [SerializeField] float attackRange;
-    [SerializeField] GameObject player;
+    [SerializeField] Transform target;
 
     Animator slasherController;
     Rigidbody rb;
@@ -20,22 +18,21 @@ public class TPEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // Prevent tipping over
         slasherController = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void FixedUpdate()
     {
-        if (player == null) return; //No action till target assigned
+        if (target == null) return; //No action till target assigned
 
-        slasherController.Play("Run");
+        slasherController.Play("zombie_transition");
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
         // Compute distance to player to decide patrol vs chase
 
         if (distanceToPlayer <= chaseRange)
         {
             //Chase mode
-            float diff = player.transform.position.x - transform.position.x;
+            float diff = target.position.x - transform.position.x;
             // Horizontal difference to player (positive = player on the right)
 
             float dir = 0f;
@@ -48,11 +45,6 @@ public class TPEnemy : MonoBehaviour
             // Apply horizontal velocity, keep current vertical & z velocity
 
             Flip(dir);
-           
-        }
-        else if (distanceToPlayer <= attackRange)
-        {
-            
         }
         else
         {

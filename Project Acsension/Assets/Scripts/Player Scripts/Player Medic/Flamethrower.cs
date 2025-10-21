@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -14,7 +14,6 @@ public class Flamethrower : MonoBehaviour
     [SerializeField] float fuel = 100;
 
     public bool canFire;
-    public bool canRegenAmmo;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,34 +24,19 @@ public class Flamethrower : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.forward, Color.red);
+    }
 
-        if (Input.GetButton("Fire1") && canFire)
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if(context.performed && Time.time >= nextTimetoFire)
         {
             flameParticles.Play();
             UseFlamethrower();
             nextTimetoFire = Time.time + 1f / fireRate;
         }
-        else
+        else if(context.canceled)
         {
             flameParticles.Stop();
-        }
-
-        if(fuel <= 0)
-        {
-            canFire = false;
-            canRegenAmmo = true;
-            AmmoRegen();
-        }
-        else if(fuel >= 100)
-        {
-            canFire = true;
-            canRegenAmmo=false;
-            AmmoRegen();
-        }
-        else if (fuel < 100)
-        {
-            canRegenAmmo = true;
-            AmmoRegen();
         }
     }
 
@@ -61,10 +45,10 @@ public class Flamethrower : MonoBehaviour
         if (canFire)
         {
             RaycastHit hit;
-            if (Physics.Raycast(flameHitDetection.position, flameHitDetection.transform.forward * flamethrowerRange, out hit))
+            if (Physics.Raycast(flameHitDetection.position, flameHitDetection.transform.forward, out hit, flamethrowerRange))
             {
                 Debug.Log(hit.transform.name);
-                Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.forward * flamethrowerRange, Color.red);
+                Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.right, Color.red);
 
                 var enemyHealth = GetComponent<EnemyHealth>();
                 if (enemyHealth != null)
@@ -73,15 +57,6 @@ public class Flamethrower : MonoBehaviour
                 }
             }
             fuel -= 1;
-        }
-    }
-
-    private void AmmoRegen()
-    {
-        if(canRegenAmmo)
-        {
-            fuel += 1 * Time.deltaTime;
-            Debug.Log("Is regenerating ammo");
         }
     }
 }
