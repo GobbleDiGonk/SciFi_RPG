@@ -5837,6 +5837,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 74a13eb7-4056-47f8-81c0-f457af4547f5
+    m_ActionName: 'Player/HoldAttack[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -5854,6 +5858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a831b2b4e55d32c47a588243d96c11e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeHolder: {fileID: 0}
   meleeWeapon: {fileID: 1838670114}
   meleeAnimator: {fileID: 1838670117}
   weaponCollision: {fileID: 1838670116}
@@ -8025,6 +8030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a831b2b4e55d32c47a588243d96c11e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeHolder: {fileID: 0}
   meleeWeapon: {fileID: 0}
   meleeAnimator: {fileID: 0}
   weaponCollision: {fileID: 0}

@@ -30,9 +30,14 @@ public class Flamethrower : MonoBehaviour
     {
         if(context.performed && Time.time >= nextTimetoFire)
         {
-            flameParticles.Play();
-            UseFlamethrower();
-            nextTimetoFire = Time.time + 1f / fireRate;
+            if (canFire)
+            {
+                fireRate = context.ReadValue<float>();
+                flameParticles.Play();
+                UseFlamethrower();
+                nextTimetoFire = Time.time + 1f / fireRate;
+                fuel -= 1;
+            }
         }
         else if(context.canceled)
         {
@@ -48,15 +53,15 @@ public class Flamethrower : MonoBehaviour
             if (Physics.Raycast(flameHitDetection.position, flameHitDetection.transform.forward, out hit, flamethrowerRange))
             {
                 Debug.Log(hit.transform.name);
-                Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.right, Color.red);
+                Debug.DrawRay(flameHitDetection.position, flameHitDetection.transform.right * hit.distance, Color.red);
 
-                var enemyHealth = GetComponent<EnemyHealth>();
-                if (enemyHealth != null)
+                EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
+
+                if(enemy != null)
                 {
-                    enemyHealth.TakeDamage(1);
+                    enemy.TakeDamage(1);
                 }
             }
-            fuel -= 1;
         }
     }
 }
