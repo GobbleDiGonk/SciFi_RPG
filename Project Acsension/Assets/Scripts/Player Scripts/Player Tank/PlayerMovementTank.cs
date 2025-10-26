@@ -33,8 +33,15 @@ public class PlayerMovementTank : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
     {
-        horizontalMovement = context.ReadValue<Vector2>().x;
-        tankAnimator.Play("tank walk");
+        if(context.performed)
+        {
+            horizontalMovement = context.ReadValue<Vector2>().x;
+            tankAnimator.Play("Walk");
+        }
+        else if(context.canceled)
+        {
+            tankAnimator.Play("Idle");
+        }
     }
 
     public void Jump(InputAction.CallbackContext context) //calls the jump input
@@ -50,10 +57,6 @@ public class PlayerMovementTank : MonoBehaviour
         }
     }
 
-    public void ShieldUp(InputAction.CallbackContext context)
-    {
-        
-    }
 
     private bool isGrounded() //uses raycast to check if the player is on the ground
     {
@@ -81,7 +84,7 @@ public class PlayerMovementTank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void FixedUpdate()
