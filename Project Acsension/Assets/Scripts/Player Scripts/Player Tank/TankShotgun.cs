@@ -41,9 +41,9 @@ public class TankShotgun : MonoBehaviour
 
     private IEnumerator Fire()
     {
-        var fireBulletTop = Instantiate(bullet, muzzleTop.position, Quaternion.identity);
-        var fireBulletMiddle = Instantiate(bullet, muzzleMiddle.position, Quaternion.identity);
-        var fireBulletBottom = Instantiate(bullet, muzzleBottom.position, Quaternion.identity);
+        var fireBulletTop = Instantiate(bullet, muzzleTop.position, muzzleTop.rotation);
+        var fireBulletMiddle = Instantiate(bullet, muzzleMiddle.position, muzzleMiddle.rotation);
+        var fireBulletBottom = Instantiate(bullet, muzzleBottom.position, muzzleBottom.rotation);
         fireBulletTop.GetComponent<Rigidbody>().AddForce(muzzleTop.transform.forward * bulletVelocity, ForceMode.Impulse);
         fireBulletMiddle.GetComponent<Rigidbody>().AddForce(muzzleMiddle.transform.forward * bulletVelocity, ForceMode.Impulse);
         fireBulletBottom.GetComponent<Rigidbody>().AddForce(muzzleBottom.transform.forward * bulletVelocity, ForceMode.Impulse);

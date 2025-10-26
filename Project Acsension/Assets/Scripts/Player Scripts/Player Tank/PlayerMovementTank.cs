@@ -10,6 +10,7 @@ public class PlayerMovementTank : MonoBehaviour
     [SerializeField] private float jumpHeight;
 
     Rigidbody rb;
+    [SerializeField] Animator tankAnimator;
 
     float horizontalMovement;
 
@@ -24,6 +25,7 @@ public class PlayerMovementTank : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        tankAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>(); //gets the rigidbody component of the player
         rb.freezeRotation = true; //prevents the player from falling over
         direction = 1; //Forces the player to face right upon spawning
@@ -32,6 +34,7 @@ public class PlayerMovementTank : MonoBehaviour
     public void Move(InputAction.CallbackContext context) //calls the movement input
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
+        tankAnimator.Play("tank walk");
     }
 
     public void Jump(InputAction.CallbackContext context) //calls the jump input
