@@ -8,6 +8,8 @@ public class NPCTrigger : MonoBehaviour
 
     bool inRange = false;
 
+    [SerializeField] NPCDialogue dialogue; // Inspector에서 연결
+
     void Reset()
     {
         var col = GetComponent<Collider>();
@@ -19,7 +21,7 @@ public class NPCTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inRange = true;
-            Debug.Log("[NPC] Player entered. Press F to accept quest.");
+            Debug.Log("[NPC] Player entered. Press F to talk.");
         }
     }
 
@@ -35,12 +37,20 @@ public class NPCTrigger : MonoBehaviour
     void Update()
     {
         bool fOld = Input.GetKeyDown(KeyCode.F);
-        bool fNew = Keyboard.current?.fKey.wasPressedThisFrame ?? false;
 
-        if (inRange && !questActive && !questDone && (fOld || fNew))
+        if (inRange && fOld)
         {
-            questActive = true;
-            Debug.Log("[NPC] Quest Start! (questActive = true)");
+            if (!questActive)
+            {
+                questActive = true;
+                if (dialogue != null)
+                    dialogue.StartDialogue();
+            }
+            else
+            {
+                if (dialogue != null)
+                    dialogue.NextDialogue();
+            }
         }
     }
 }
