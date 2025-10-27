@@ -92,8 +92,9 @@ public class DPSWeapons : MonoBehaviour
         playerWeapon.GetComponent<Animator>().Play("gunSteady");
     }
 
-    private void ReloadWeapon()
+    private IEnumerator ReloadWeapon()
     {
+        yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
     }
 }

@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float rollTime = 0.2f;
     public float rollCooldown = 5f;
 
-    public Animator rollAnim;
+    private Animator dpsAnimator;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,13 +36,22 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); //gets the rigidbody component of the player
         rb.freezeRotation = true; //prevents the player from falling over
+        dpsAnimator = GetComponent<Animator>();
         direction = 1;
         canRoll = true;
     }
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
     {
-        horizontalMovement = context.ReadValue<Vector2>().x;
+        if(context.performed)
+        {
+            horizontalMovement = context.ReadValue<Vector2>().x;
+            dpsAnimator.SetBool("IsWalking", true);
+        }
+        else if(context.canceled)
+        {
+            dpsAnimator.SetBool("IsWalking", false);
+        }
     }
 
     public void Jump(InputAction.CallbackContext context) //calls the jump input
@@ -99,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             bool originalGraivty = rb.useGravity;
             rb.useGravity = false;
             rb.linearVelocity = new Vector2(transform.localScale.x * rollPower, 0f);
-            rollAnim.Play("DodgeRoll");
+            dpsAnimator.Play("DodgeRoll");
             Debug.Log("Is rolling baby");
             rb.useGravity = true;
             isRolling = false;

@@ -40,7 +40,7 @@ public class PlayerMovementTank : MonoBehaviour
         }
         else if(context.canceled)
         {
-            tankAnimator.Play("Idle");
+            tankAnimator.SetBool("IsWalking", false);
         }
     }
 
