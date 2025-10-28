@@ -33,9 +33,9 @@ public class PlayerHealth : MonoBehaviour
         SelfHarm();
     }
 
-    public void TakeDamage(int amount)
+    private void TakeDamage(int damage)
     {
-        currentHealth -= amount;
+        currentHealth -= damage;
 
         healthBar.setHealth(currentHealth);
 
