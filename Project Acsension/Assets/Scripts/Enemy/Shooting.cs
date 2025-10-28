@@ -13,6 +13,9 @@ public class Shooting : MonoBehaviour
 
     public float sightRange;
     public LayerMask playerLayer;
+
+    bool isAttacking;
+    public Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +30,7 @@ public class Shooting : MonoBehaviour
 
     void ShootAtPlayer()
     {
+
         bulletTime -= Time.deltaTime;
         if (bulletTime > 0) return;
         bulletTime = timer;
@@ -35,6 +39,8 @@ public class Shooting : MonoBehaviour
         Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
         bulletRig.AddForce(bulletRig.transform.forward * bulletSpeed);
         Destroy(bulletObj, 5f);
+        anim.SetBool("isAttacking", true);
+
     }
     
     void PlayerDetect()
@@ -46,8 +52,11 @@ public class Shooting : MonoBehaviour
             Debug.Log("Something Found");
             if (hit.collider != null) //if found something
             {
+                
                 ShootAtPlayer();
+            
             }
+           
         }
 
     }
