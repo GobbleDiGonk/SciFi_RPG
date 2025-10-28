@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         dpsAnimator = GetComponent<Animator>();
         direction = 1;
         canRoll = true;
+        direction = 1;
     }
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
@@ -46,11 +47,15 @@ public class PlayerMovement : MonoBehaviour
         if(context.performed)
         {
             horizontalMovement = context.ReadValue<Vector2>().x;
+<<<<<<< Updated upstream
             dpsAnimator.SetBool("IsWalking", true);
+=======
+            dpsAnimator.SetFloat("Walking", movementSpeed);
+>>>>>>> Stashed changes
         }
         else if(context.canceled)
         {
-            dpsAnimator.SetBool("IsWalking", false);
+            dpsAnimator.SetFloat("Walking", movementSpeed);
         }
     }
 
@@ -63,7 +68,13 @@ public class PlayerMovement : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
                 rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+
+                dpsAnimator.SetBool("IsJumping", true);
             }
+        }
+        else
+        {
+            dpsAnimator.SetBool("IsJumping", false);
         }
     }
 
@@ -108,10 +119,11 @@ public class PlayerMovement : MonoBehaviour
             bool originalGraivty = rb.useGravity;
             rb.useGravity = false;
             rb.linearVelocity = new Vector2(transform.localScale.x * rollPower, 0f);
-            dpsAnimator.Play("DodgeRoll");
+            dpsAnimator.SetBool("IsRolling", true);
             Debug.Log("Is rolling baby");
             rb.useGravity = true;
             isRolling = false;
+            dpsAnimator.SetBool("IsRolling", false);
             yield return new WaitForSeconds(rollCooldown);
             canRoll = true;
         }
@@ -135,6 +147,6 @@ public class PlayerMovement : MonoBehaviour
 
         Flip();
 
-        rb.linearVelocity = new Vector2(horizontalMovement * movementSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector3(horizontalMovement * movementSpeed, rb.linearVelocity.y, 0f);
     }
 }
