@@ -43,17 +43,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
     {
-        if(context.performed)
+        if (context.performed)
         {
             horizontalMovement = context.ReadValue<Vector2>().x;
-            dpsAnimator.SetBool("IsWalking", true);
+            dpsAnimator.SetFloat("IsWalking", movementSpeed);
         }
-        else if(context.canceled)
+        else if (context.canceled)
         {
-            dpsAnimator.SetBool("IsWalking", false);
+            dpsAnimator.SetFloat("IsWalking", movementSpeed);
         }
     }
-
     public void Jump(InputAction.CallbackContext context) //calls the jump input
     {
         if(isGrounded())
@@ -63,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
                 rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+
+                dpsAnimator.SetBool("IsJumping", true);
             }
         }
     }
