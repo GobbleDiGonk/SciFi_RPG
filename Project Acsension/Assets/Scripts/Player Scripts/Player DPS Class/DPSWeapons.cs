@@ -62,11 +62,8 @@ public class DPSWeapons : MonoBehaviour
 
     public void Reload(InputAction.CallbackContext context) //reload input
     {
-        if(context.performed)
-        {
-            ReloadWeapon();
-            Debug.Log("Weapon Reloaded");
-        }
+        ReloadWeapon();
+        Debug.Log("Weapon Reloaded");
     }
 
     public void Aim(InputAction.CallbackContext context)
@@ -78,11 +75,6 @@ public class DPSWeapons : MonoBehaviour
     {
         var fireBullet = Instantiate(bullet, muzzle.position, Quaternion.identity);
         fireBullet.GetComponent<Rigidbody>().AddForce(muzzle.transform.forward * bulletVelocity, ForceMode.Impulse);
-        
-    }
-
-    private void stopRecoil()
-    {
         
     }
 
