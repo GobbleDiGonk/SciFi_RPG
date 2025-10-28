@@ -28,13 +28,13 @@ public class RifleBullet : MonoBehaviour
             {
                 enemyHealth.TakeDamage(1);
             }
-
-            if (minPierceCounter == maxPierceCounter)
-            {
-                Destroy(this.gameObject);
-            }
         }
         else
+        {
+            Destroy(this.gameObject);
+        }
+
+        if(minPierceCounter == maxPierceCounter)
         {
             Destroy(this.gameObject);
         }
