@@ -24,7 +24,7 @@ public class TPEnemy : MonoBehaviour
     {
         if (target == null) return; //No action till target assigned
 
-        slasherController.Play("Idle");
+        slasherController.Play("Run");
 
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
         // Compute distance to player to decide patrol vs chase
