@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckSize;
     public LayerMask groundLayer;
 
-    public int direction;
+    public float direction;
 
     private bool canRoll;
     private bool isRolling;
@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>(); //gets the rigidbody component of the player
         rb.freezeRotation = true; //prevents the player from falling over
         dpsAnimator = GetComponent<Animator>();
-        direction = 1;
         canRoll = true;
     }
 
@@ -45,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(context.performed)
         {
-            horizontalMovement = context.ReadValue<Vector2>().x;
+            horizontalMovement = context.ReadValue<Vector2>().x * Time.deltaTime;
             dpsAnimator.SetBool("IsWalking", true);
         }
         else if(context.canceled)
@@ -88,11 +87,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(horizontalMovement > 0f)
         {
-            direction = 1;
+            this.gameObject.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
         else if(horizontalMovement < 0f)
         {
-            direction = -1;
+            this.gameObject.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
 
         transform.localScale = new Vector3(direction, 1, 1);

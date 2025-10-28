@@ -9,7 +9,7 @@ public class DPSWeapons : MonoBehaviour
     public Transform muzzle;
     public GameObject bullet;
 
-    private Animator recoil;
+    private Animator dpsAnimator;
 
     public float bulletVelocity;
     public float reloadTime;
@@ -18,31 +18,25 @@ public class DPSWeapons : MonoBehaviour
     private float nextTimeToFire = 0f;
 
     public int currentAmmo, maxAmmo = 30;
-
-    public bool gunEmpty;
-    public bool gunLoaded;
     public bool canFire;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentAmmo = 30;
+        dpsAnimator.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       if(currentAmmo >=0)
+       if(currentAmmo > 0)
         {
-            gunLoaded = true;
-            gunEmpty = false;
             canFire = true;
         }
-       else if (currentAmmo <= 0)
+       else if (currentAmmo == 0)
         {
-            gunLoaded = true;
-            gunEmpty = false;
-            canFire = true;
+            canFire = false;
         }
     }
 
@@ -55,23 +49,26 @@ public class DPSWeapons : MonoBehaviour
     {
         if (context.performed && Time.time >= nextTimeToFire)
         {
-            if (gunLoaded && canFire)
+            if (canFire)
             {
                 nextTimeToFire = Time.time + 1f / fireRate;
                 Fire();
                 currentAmmo -= 1;
+                dpsAnimator.SetBool("IsShooting", true);
             }
+        }
+
+        if(context.canceled)
+        {
+            dpsAnimator.SetBool("IsShooting", false);
         }
     }
 
     public void Reload(InputAction.CallbackContext context) //reload input
     {
-        if(context.performed && gunEmpty)
+        if(context.performed)
         {
             ReloadWeapon();
-            gunLoaded = true;
-            gunEmpty = false;
-            Debug.Log("Weapon Reloaded");
         }
     }
 
@@ -84,17 +81,15 @@ public class DPSWeapons : MonoBehaviour
     {
         var fireBullet = Instantiate(bullet, muzzle.position, Quaternion.identity);
         fireBullet.GetComponent<Rigidbody>().AddForce(muzzle.transform.forward * bulletVelocity, ForceMode.Impulse);
-        playerWeapon.GetComponent<Animator>().Play("gunRecoil");
-    }
-
-    private void stopRecoil()
-    {
-        playerWeapon.GetComponent<Animator>().Play("gunSteady");
     }
 
     private IEnumerator ReloadWeapon()
     {
-        yield return new WaitForSeconds(reloadTime);
-        currentAmmo = maxAmmo;
+        if(currentAmmo < 30)
+        {
+            yield return new WaitForSeconds(reloadTime);
+            currentAmmo = maxAmmo;
+            Debug.Log("Weapon Reloaded");
+        }
     }
 }
