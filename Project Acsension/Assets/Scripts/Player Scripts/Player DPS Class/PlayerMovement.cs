@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>(); //gets the rigidbody component of the player
         rb.freezeRotation = true; //prevents the player from falling over
         dpsAnimator = GetComponent<Animator>();
-        direction = 1;
         canRoll = true;
     }
 
@@ -89,11 +88,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(horizontalMovement > 0f)
         {
-            direction = 1;
+            this.gameObject.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
         else if(horizontalMovement < 0f)
         {
-            direction = -1;
+            this.gameObject.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
 
         transform.localScale = new Vector3(direction, 1, 1);
