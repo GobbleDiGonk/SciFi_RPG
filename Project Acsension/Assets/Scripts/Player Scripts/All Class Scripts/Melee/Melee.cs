@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Melee : MonoBehaviour
 {
-    public GameObject meleeHolder;
-
     public GameObject meleeWeapon;
 
     public Animator meleeAnimator;
