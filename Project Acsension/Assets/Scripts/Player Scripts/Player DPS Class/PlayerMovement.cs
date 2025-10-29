@@ -45,11 +45,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed)
         {
             horizontalMovement = context.ReadValue<Vector2>().x;
-            dpsAnimator.SetFloat("IsWalking", Mathf.Abs(movementSpeed));
-        }
-        else if (context.canceled)
-        {
-            dpsAnimator.SetFloat("IsWalking", Mathf.Abs(movementSpeed));
+            dpsAnimator.SetFloat("IsWalking", Mathf.Abs(horizontalMovement));
         }
     }
     public void Jump(InputAction.CallbackContext context) //calls the jump input
@@ -124,6 +120,8 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+
+        rb.linearVelocity = new Vector3(horizontalMovement * movementSpeed, rb.linearVelocity.y, 0f);
     }
 
     private void FixedUpdate()
@@ -134,7 +132,5 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Flip();
-
-        rb.linearVelocity = new Vector3(horizontalMovement * movementSpeed, rb.linearVelocity.y, 0f);
     }
 }
