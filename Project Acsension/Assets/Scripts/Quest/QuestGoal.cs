@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider))]
 public class QuestGoal : MonoBehaviour
@@ -39,5 +40,8 @@ public class QuestGoal : MonoBehaviour
 
         if (targetRenderer) targetRenderer.material.color = Color.blue;
         Debug.Log("[Goal] Quest Completed! Colour changed to blue.");
+
+        //Ending Scene load
+        SceneManager.LoadScene("Ending");
     }
 }
