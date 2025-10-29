@@ -62,8 +62,7 @@ public class DPSWeapons : MonoBehaviour
 
     public void Reload(InputAction.CallbackContext context) //reload input
     {
-        ReloadWeapon();
-        Debug.Log("Weapon Reloaded");
+        StartCoroutine(ReloadWeapon());
     }
 
     public void Aim(InputAction.CallbackContext context)
@@ -82,5 +81,6 @@ public class DPSWeapons : MonoBehaviour
     {
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
+        Debug.Log("Weapon Reloaded");
     }
 }
