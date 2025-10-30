@@ -21,6 +21,7 @@ public class TankShield : MonoBehaviour
         tankShield.SetActive(false);
         canUseShield = true;
         canTakeDamage = true;
+        currentShieldHealth = maxShieldHealth;
     }
 
     public void deployShield(InputAction.CallbackContext context)
@@ -58,7 +59,7 @@ public class TankShield : MonoBehaviour
     {
         canUseShield = false;
         yield return new WaitForSeconds(shieldCooldownTime);
-        canUseShield = false;
+        canUseShield = true;
     }
 
     private IEnumerator invincibilityTimer()

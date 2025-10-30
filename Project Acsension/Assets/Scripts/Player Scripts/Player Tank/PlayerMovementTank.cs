@@ -10,7 +10,7 @@ public class PlayerMovementTank : MonoBehaviour
     [SerializeField] private float jumpHeight;
 
     Rigidbody rb;
-    [SerializeField] Animator tankAnimator;
+    Animator tankAnimator;
 
     float horizontalMovement;
 
@@ -33,15 +33,8 @@ public class PlayerMovementTank : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
     {
-        if(context.performed)
-        {
-            horizontalMovement = context.ReadValue<Vector2>().x;
-            tankAnimator.Play("Walk");
-        }
-        else if(context.canceled)
-        {
-            tankAnimator.SetBool("IsWalking", false);
-        }
+        horizontalMovement = context.ReadValue<Vector2>().x;
+        tankAnimator.SetFloat("IsWalking", horizontalMovement);
     }
 
     public void Jump(InputAction.CallbackContext context) //calls the jump input
@@ -53,7 +46,11 @@ public class PlayerMovementTank : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
                 rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+
+                tankAnimator.SetBool("IsJumping", true);
             }
+
+            tankAnimator.SetBool("IsJumping", false);
         }
     }
 

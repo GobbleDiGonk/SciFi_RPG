@@ -5,8 +5,6 @@ using System.Collections;
 
 public class TankShotgun : MonoBehaviour
 {
-
-    public GameObject playerWeapon;
     public Transform muzzleTop;
     public Transform muzzleMiddle;
     public Transform muzzleBottom;
@@ -15,11 +13,10 @@ public class TankShotgun : MonoBehaviour
     public float bulletVelocity;
     public float reloadTime;
 
-    public int currentAmmo, maxAmmo = 30;
+    public int currentAmmo, maxAmmo = 8;
 
-    public bool gunEmpty;
-    public bool gunLoaded;
     public bool canFire;
+    public bool isPumping;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +28,7 @@ public class TankShotgun : MonoBehaviour
     {
         if(context.performed)
         {
-            if(gunLoaded && canFire)
+            if(canFire)
             {
                 StartCoroutine(Fire());
                 currentAmmo -= 1;
@@ -39,16 +36,32 @@ public class TankShotgun : MonoBehaviour
         }
     }
 
+    public void Reload(InputAction.CallbackContext context)
+    {
+        StartCoroutine(ReloadWeapon());
+    }
+
     private IEnumerator Fire()
     {
-        var fireBulletTop = Instantiate(bullet, muzzleTop.position, muzzleTop.rotation);
-        var fireBulletMiddle = Instantiate(bullet, muzzleMiddle.position, muzzleMiddle.rotation);
-        var fireBulletBottom = Instantiate(bullet, muzzleBottom.position, muzzleBottom.rotation);
-        fireBulletTop.GetComponent<Rigidbody>().AddForce(muzzleTop.transform.forward * bulletVelocity, ForceMode.Impulse);
-        fireBulletMiddle.GetComponent<Rigidbody>().AddForce(muzzleMiddle.transform.forward * bulletVelocity, ForceMode.Impulse);
-        fireBulletBottom.GetComponent<Rigidbody>().AddForce(muzzleBottom.transform.forward * bulletVelocity, ForceMode.Impulse);
-        yield return new WaitForSeconds(1.5f);
-        
+        if(!isPumping)
+        {
+            var fireBulletTop = Instantiate(bullet, muzzleTop.position, muzzleTop.rotation);
+            var fireBulletMiddle = Instantiate(bullet, muzzleMiddle.position, muzzleMiddle.rotation);
+            var fireBulletBottom = Instantiate(bullet, muzzleBottom.position, muzzleBottom.rotation);
+            fireBulletTop.GetComponent<Rigidbody>().AddForce(muzzleTop.transform.forward * bulletVelocity, ForceMode.Impulse);
+            fireBulletMiddle.GetComponent<Rigidbody>().AddForce(muzzleMiddle.transform.forward * bulletVelocity, ForceMode.Impulse);
+            fireBulletBottom.GetComponent<Rigidbody>().AddForce(muzzleBottom.transform.forward * bulletVelocity, ForceMode.Impulse);
+            isPumping = true;
+            yield return new WaitForSeconds(1.5f);
+            isPumping = false;
+        }   
+    }
+
+    private IEnumerator ReloadWeapon()
+    {
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = maxAmmo;
+        Debug.Log("Weapon Reloaded");
     }
 
     // Update is called once per frame
@@ -56,14 +69,10 @@ public class TankShotgun : MonoBehaviour
     {
         if (currentAmmo >= 0)
         {
-            gunLoaded = true;
-            gunEmpty = false;
-            canFire = true;
+            canFire = false;
         }
         else if (currentAmmo <= 0)
         {
-            gunLoaded = true;
-            gunEmpty = false;
             canFire = true;
         }
     }

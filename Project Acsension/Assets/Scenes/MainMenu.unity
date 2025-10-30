@@ -1274,12 +1274,14 @@ MonoBehaviour:
     F:
     NPC Interaction
 
+    Q: Ability
+
+    R: Reload Weapon
 
 
 
-
-
-    Click to close the panel
+    Click to close the
+    panel
 
 '
   m_isRightToLeft: 0
@@ -1553,7 +1555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1096623410
 RectTransform:
   m_ObjectHideFlags: 0

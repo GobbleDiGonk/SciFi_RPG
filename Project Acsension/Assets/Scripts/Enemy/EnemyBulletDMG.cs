@@ -11,8 +11,7 @@ public class EnemyBulletDMG : MonoBehaviour
 
             if (playerHP != null)
             {
-                playerHP.TakeDamage(damage);
-               
+                playerHP.TakeDamage(damage);    
             }
         }
 

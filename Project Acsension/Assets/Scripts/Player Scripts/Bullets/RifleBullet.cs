@@ -16,15 +16,15 @@ public class RifleBullet : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             var enemyHealth = GetComponent<EnemyHealth>();
 
             minPierceCounter += 1;
 
-            if(enemyHealth != null)
+            if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(4);
             }
@@ -34,7 +34,7 @@ public class RifleBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if(minPierceCounter == maxPierceCounter)
+        if (minPierceCounter == maxPierceCounter)
         {
             Destroy(this.gameObject);
         }
