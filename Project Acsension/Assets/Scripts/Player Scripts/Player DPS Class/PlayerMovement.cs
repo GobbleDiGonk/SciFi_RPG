@@ -42,11 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context) //calls the movement input
     {
-        if (context.performed)
-        {
-            horizontalMovement = context.ReadValue<Vector2>().x;
-            dpsAnimator.SetFloat("IsWalking", Mathf.Abs(horizontalMovement));
-        }
+        horizontalMovement = context.ReadValue<Vector2>().x;
+        dpsAnimator.SetFloat("IsWalking", Mathf.Abs(horizontalMovement));
     }
     public void Jump(InputAction.CallbackContext context) //calls the jump input
     {
@@ -90,8 +87,6 @@ public class PlayerMovement : MonoBehaviour
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
-
-        transform.localScale = new Vector3(direction, 1, 1);
     }
 
     private IEnumerator Roll()

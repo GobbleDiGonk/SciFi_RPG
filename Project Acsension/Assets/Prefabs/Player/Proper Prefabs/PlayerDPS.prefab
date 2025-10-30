@@ -1087,6 +1087,7 @@ Transform:
   - {fileID: 6304308565744981206}
   - {fileID: 643241647413853358}
   - {fileID: 4923697219695350007}
+  - {fileID: 4133507748222995117}
   m_Father: {fileID: 4570892964377073039}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &2460156596792273371
@@ -1787,7 +1788,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4727039788053318938}
-  - {fileID: 4133507748222995117}
   - {fileID: 4479345518050232423}
   - {fileID: 8986404377138935440}
   - {fileID: 1018768867957111018}
@@ -2980,12 +2980,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6377468383900867640}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.48507968, y: 0.5347124, z: 0.5110025, w: 0.46653706}
-  m_LocalPosition: {x: -0.113752335, y: 1.0226978, z: 0.00084254146}
+  m_LocalRotation: {x: -0.000000037252892, y: 0.00000011920923, z: -0.00000007823107, w: 1}
+  m_LocalPosition: {x: 0.26709977, y: 3.1978, z: 1.4780009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2256020101728323497}
+  m_Father: {fileID: 6424338786016828368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6512246527241104667
 GameObject:
@@ -4256,7 +4256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a831b2b4e55d32c47a588243d96c11e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeHolder: {fileID: 0}
   meleeWeapon: {fileID: 0}
   meleeAnimator: {fileID: 0}
   weaponCollision: {fileID: 0}
