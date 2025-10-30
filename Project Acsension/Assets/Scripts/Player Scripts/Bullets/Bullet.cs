@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
 
             if(collision != null)
             {
-                enemyHealth.TakeDamage(1);
+                enemyHealth.TakeDamage(4);
             }
         }
 

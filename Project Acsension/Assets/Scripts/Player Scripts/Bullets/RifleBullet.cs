@@ -16,7 +16,7 @@ public class RifleBullet : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
@@ -26,7 +26,7 @@ public class RifleBullet : MonoBehaviour
 
             if(enemyHealth != null)
             {
-                enemyHealth.TakeDamage(1);
+                enemyHealth.TakeDamage(4);
             }
         }
         else
