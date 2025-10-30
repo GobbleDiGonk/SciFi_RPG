@@ -2,17 +2,23 @@ using UnityEngine;
 
 public class EnemyBulletDMG : MonoBehaviour
 {
-   public PlayerHealth playerHP;
+   PlayerHealth playerHP;
+    public int damage;
 
+    private void Start()
+    {
+        playerHP = GetComponent<PlayerHealth>();
+    }
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             //var playerHealth = GetComponent<PlayerHealth>();
 
             if (collision != null)
             {
-                playerHP.TakeDamage(2);
+                playerHP.TakeDamage(damage);
+               
             }
         }
 
