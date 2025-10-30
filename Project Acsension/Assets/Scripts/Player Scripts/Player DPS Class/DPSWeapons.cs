@@ -56,6 +56,7 @@ public class DPSWeapons : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
                 Fire();
                 currentAmmo -= 1;
+                Debug.Log("Is shooting bullets");
             }
         }
     }
@@ -63,11 +64,6 @@ public class DPSWeapons : MonoBehaviour
     public void Reload(InputAction.CallbackContext context) //reload input
     {
         StartCoroutine(ReloadWeapon());
-    }
-
-    public void Aim(InputAction.CallbackContext context)
-    {
-
     }
 
     private void Fire()

@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float currentHealth;
-    public float maxHealth = 5;
+    public float maxHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

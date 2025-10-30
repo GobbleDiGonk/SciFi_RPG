@@ -34,7 +34,7 @@ public class PlayerMovementTank : MonoBehaviour
     public void Move(InputAction.CallbackContext context) //calls the movement input
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
-        tankAnimator.SetFloat("IsWalking", horizontalMovement);
+        tankAnimator.SetFloat("IsMoving", horizontalMovement);
     }
 
     public void Jump(InputAction.CallbackContext context) //calls the jump input
@@ -68,14 +68,12 @@ public class PlayerMovementTank : MonoBehaviour
     {
         if(horizontalMovement > 0f)
         {
-            direction = 1;
+            this.gameObject.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
         else if(horizontalMovement < 0f)
         {
-            direction = -1;
+            this.gameObject.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
-
-        transform.localScale = new Vector3(direction, 1, 1);
     }
 
     // Update is called once per frame

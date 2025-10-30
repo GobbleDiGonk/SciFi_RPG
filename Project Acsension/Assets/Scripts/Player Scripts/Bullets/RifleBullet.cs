@@ -16,15 +16,15 @@ public class RifleBullet : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
-            var enemyHealth = GetComponent<EnemyHealth>();
+            var enemyHealth = collision.GetComponent<EnemyHealth>();
 
             minPierceCounter += 1;
 
-            if (enemyHealth != null)
+            if (collision != null)
             {
                 enemyHealth.TakeDamage(4);
             }
