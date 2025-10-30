@@ -33,6 +33,21 @@ public class RifleBullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        if (collision.tag == "Boss")
+        {
+            var bossHealth = collision.GetComponent<BossHPScript>();
+
+            minPierceCounter += 1;
+
+            if (collision != null)
+            {
+                bossHealth.TakeDamage(4);
+            }
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
         if (minPierceCounter == maxPierceCounter)
         {

@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public healthBar healthBar;
 
     public Gradient gradient;
+    public GameObject gameOverUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,9 +40,10 @@ public class PlayerHealth : MonoBehaviour
 
         healthBar.setHealth(currentHealth);
 
-        if(currentHealth == 0)
+        if(currentHealth <= 0)
         {
             Destroy(gameObject);
+            gameOverUI.SetActive(true);
         }
     }
 }
